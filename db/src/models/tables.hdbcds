@@ -1,0 +1,13 @@
+entity CUST_TEMP{		
+CUSTID : String(10);		
+CUSTNAME : String(20);		
+DATE_FROM : LocalDate;		
+DATE_TO : LocalDate;		
+DEPT : String(2); }		
+		
+entity CUST_TRANS {		
+CUSTID : String(10);		
+TRANS_DATE : LocalDate;		
+REVENUE 	: Integer;	
+}		
+		

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CVD_CUST_TEMP" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CVD_CUST_TEMP"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="CUST_TEMP">
+    <resourceUri>CUST_TEMP</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="CUST_TEMP">
+  <attributes>
+    <attribute id="CUSTID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTID"/>
+      <keyMapping columnObjectName="CUST_TEMP" columnName="CUSTID"/>
+    </attribute>
+    <attribute id="CUSTNAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CUSTNAME"/>
+      <keyMapping columnObjectName="CUST_TEMP" columnName="CUSTNAME"/>
+    </attribute>
+    <attribute id="DATE_FROM" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE_FROM"/>
+      <keyMapping columnObjectName="CUST_TEMP" columnName="DATE_FROM"/>
+    </attribute>
+    <attribute id="DATE_TO" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATE_TO"/>
+      <keyMapping columnObjectName="CUST_TEMP" columnName="DATE_TO"/>
+    </attribute>
+    <attribute id="DEPT" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DEPT"/>
+      <keyMapping columnObjectName="CUST_TEMP" columnName="DEPT"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

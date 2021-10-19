@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CVS_TEMPORALJOIN" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CVS_TEMPORALJOIN"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="CUST_TRANS">
+    <resourceUri>CUST_TRANS</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:AggregationView" id="FACTS">
+    <viewAttributes>
+      <viewAttribute id="CUSTID"/>
+      <viewAttribute id="TRANS_DATE"/>
+      <viewAttribute id="REVENUE" aggregationType="sum"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <restrictedViewAttributes/>
+    <input node="CUST_TRANS"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="FACTS">
+  <attributes>
+    <attribute id="TRANS_DATE" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="TRANS_DATE"/>
+      <keyMapping columnObjectName="FACTS" columnName="TRANS_DATE"/>
+    </attribute>
+    <attribute id="CUSTID$local">
+      <descriptions defaultDescription="CUSTID"/>
+      <keyMapping columnObjectName="FACTS" columnName="CUSTID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="REVENUE" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="REVENUE"/>
+      <measureMapping columnObjectName="FACTS" columnName="REVENUE"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+  <sharedDimensions>
+    <logicalJoin associatedObjectUri="CVD_CUST_TEMP">
+      <attributes>
+        <attributeRef>CUSTID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>CUSTID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_1" joinType="inner" joinOperator="Equal"/>
+      <temporalJoinProperties temporalElementName="TRANS_DATE" fromElementName="DATE_FROM" toElementName="DATE_TO" temporalCondition="INCLUDE_BOTH"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+  </sharedDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="FACTS" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="215"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="FACTS" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+      <upperLeftCorner x="286" y="124"/>
+      <rectangleSize width="157.9189453125"/>
+    </shape>
+    <shape modelObjectName="CVD_CUST_TEMP" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="28" y="28"/>
+      <rectangleSize width="168.68359375"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
